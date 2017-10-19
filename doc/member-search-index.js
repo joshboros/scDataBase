@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"<Unnamed>","c":"scDataBase","l":"scDataBase()"},{"p":"<Unnamed>","c":"scDataBase","l":"scDataBase(String)","url":"scDataBase-java.lang.String-"}]
