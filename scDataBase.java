@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.lang.String;
 import java.io.File;
 import java.io.FilenameFilter;
 
@@ -7,14 +9,28 @@ import java.io.FilenameFilter;
 public class scDataBase{
     private static final String dbDirPath = "./";   /** The path where the databases are located */
     private static final String dbFileExt = ".xml"; /** The database file extension */
+    private static final String dbDefaultFileName = "default";
+    File dbFile;
     private String dbFileName;
+    private File dbFileObj;
 
     /**
      * Opens the default database.
      * This is default.xml
      */
     public scDataBase(){
-        getFileNameList();
+        dbFileName = dbDefaultFileName;
+        dbFileObj = new File(dbDirPath.concat(dbDefaultFileName.concat(dbFileExt)));
+        try {
+            if (dbFileObj.createNewFile()) {
+                //create new xml file.
+            } else {
+                //file exists.
+            }
+
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     /**
@@ -24,7 +40,20 @@ public class scDataBase{
      * @param filename  The name of the Database.
      */
     public scDataBase(String filename){
+        if (filename.endsWith(dbFileExt)){
+            filename = filename.substring(0, filename.length() - dbFileExt.length());
+        }
+        dbFileObj = new File(dbDirPath.concat(dbDefaultFileName.concat(dbFileExt)));
+        try {
+            if (dbFileObj.createNewFile()) {
+                //create new xml file
+            } else {
+                //file exists.
+            }
 
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     /**
