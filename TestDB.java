@@ -1,15 +1,15 @@
+import java.io.File;
 /**
  * The type TestDB.
  */
 public class TestDB {
-
 
     /**
      * Print dbnames.
      */
     public static void printDBnames(){
         System.out.println("Database Names on Disk: ");
-        for (String filename : scDataBase.getFileNameList()){
+        for (String filename : scDataBase.getDBnameArray()){
             System.out.println(filename);
         }
     }
@@ -22,6 +22,15 @@ public class TestDB {
      */
     public static void main(String[] args) {
         printDBnames();
+
+        scDataBase testdefdb = new scDataBase();
+        System.out.println("Opened " + testdefdb.getDBname());
+
+
+
+
+
+
 
 
     }

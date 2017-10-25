@@ -1,26 +1,48 @@
 import java.io.IOException;
 import java.lang.String;
 import java.io.File;
-import java.io.FilenameFilter;
 
 /**
  * The type scDataBase
  */
 public class scDataBase{
-    private static final String dbDirPath = "./";   /** The path where the databases are located */
-    private static final String dbFileExt = ".xml"; /** The database file extension */
-    private static final String dbDefaultFileName = "default";
-    File dbFile;
-    private String dbFileName;
+    public static final String dbDefaultDirPath = "./";   /** The path where the databases are located */
+    public static final String dbFileExt = ".xml"; /** The database file extension */
+    public static final String dbDefaultName = "default";
+    private String dbName;
     private File dbFileObj;
+
+    @Override
+    public String toString() {
+        return dbName;
+    }
+
+    /**
+     * Get the name of the current DataBase.
+     *
+     * @return the string
+     */
+    public String getDBname(){
+        return dbName;
+    }
+
+    /**
+     * Get current DataBase file object.
+     *
+     * @return the file
+     */
+    public File getDBfileObj(){
+        return dbFileObj;
+    }
+
 
     /**
      * Opens the default database.
      * This is default.xml
      */
     public scDataBase(){
-        dbFileName = dbDefaultFileName;
-        dbFileObj = new File(dbDirPath.concat(dbDefaultFileName.concat(dbFileExt)));
+        dbName = dbDefaultName;
+        dbFileObj = new File(dbDefaultDirPath.concat(dbDefaultName.concat(dbFileExt)));
         try {
             if (dbFileObj.createNewFile()) {
                 //create new xml file.
@@ -37,13 +59,13 @@ public class scDataBase{
      * Opens existing database or creates a new database.
      * The database is stored as filename.xml
      *
-     * @param filename  The name of the Database.
+     * @param filename The name of the Database.
      */
     public scDataBase(String filename){
         if (filename.endsWith(dbFileExt)){
             filename = filename.substring(0, filename.length() - dbFileExt.length());
         }
-        dbFileObj = new File(dbDirPath.concat(dbDefaultFileName.concat(dbFileExt)));
+        dbFileObj = new File(dbDefaultDirPath.concat(dbDefaultName.concat(dbFileExt)));
         try {
             if (dbFileObj.createNewFile()) {
                 //create new xml file
@@ -58,11 +80,13 @@ public class scDataBase{
 
     /**
      * Provides user with all database names currently on disk.
+     *
      * @return array of Databases
      */
-    public static String[] getFileNameList(){
-        File dir = new File(dbDirPath);
-        File[] files = dir.listFiles((dirs, name) -> name.endsWith(".xml"));
+    public static String[] getDBnameArray(){
+
+        File dir = new File(dbDefaultDirPath);
+        File[] files = dir.listFiles((dirs, name) -> name.endsWith(dbFileExt));
 
         String[] outlist = new String[files.length];
         int i = 0;
@@ -71,6 +95,4 @@ public class scDataBase{
         }
         return outlist;
     }
-
-
 }
