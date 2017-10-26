@@ -7,10 +7,10 @@ import java.io.File;
  */
 public class scDataBase{
     public static final String dbDefaultDirPath = "./";   /** The path where the databases are located */
-    public static final String dbFileExt = ".xml"; /** The database file extension */
-    public static final String dbDefaultName = "default";
-    private String dbName;
-    private File dbFileObj;
+    public static final String dbFileExt = ".xml";        /** The database file extension */
+    public static final String dbDefaultName = "default"; /** The Default database Name */
+    private String dbName;      /** The name of an instance's database. */
+    private File dbFileObj;     /** The path/file of an instance's database. */
 
     @Override
     public String toString() {
@@ -27,14 +27,36 @@ public class scDataBase{
     }
 
     /**
+     * Generate a .pdf of the current Database.
+     * @return File
+     */
+    public File getPDF(){
+
+    }
+
+    /**
+     * Generate a .html of the current Database.
+     * @return
+     */
+    public File getHtml(){
+
+    }
+
+    /**
+     * Generate a .tex of the current Database.
+     * @return File
+     */
+    public File getLatex(){
+
+    }
+
+    /**
      * Get current DataBase file object.
-     *
      * @return the file
      */
     public File getDBfileObj(){
         return dbFileObj;
     }
-
 
     /**
      * Opens the default database.
@@ -81,7 +103,7 @@ public class scDataBase{
     /**
      * Provides user with all database names currently on disk.
      *
-     * @return array of Databases
+     * @return array of Database names.
      */
     public static String[] getDBnameArray(){
 
