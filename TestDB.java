@@ -22,9 +22,17 @@ public class TestDB {
      */
     public static void main(String[] args) {
         printDBnames();
+        scDataBase[] dba =  scDataBase.getDBnameArray();
+        scDataBase dbArray[] = new scDataBase[scDataBase.getDBnameArray().length];
+        for (String dbname : scDataBase.getDBnameArray()){
+
+        }
 
         scDataBase testdefdb = new scDataBase();
         System.out.println("Opened " + testdefdb.getDBname());
+
+
+
 
 
 

@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"<Unnamed>","l":"scDataBase"},{"p":"<Unnamed>","l":"TestDB"}]
+typeSearchIndex = [{"p":"<Unnamed>","l":"scDataBase"},{"p":"<Unnamed>","l":"scRecord"},{"p":"<Unnamed>","l":"TestDB"}]
