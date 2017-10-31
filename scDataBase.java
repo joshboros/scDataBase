@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.lang.String;
 import java.io.File;
-import java.lang.String;
 
 /**
  * The type scDataBase
@@ -46,6 +45,7 @@ public class scDataBase{
      * @return File file
      */
     public File getPDF(){
+        return dbFileObj;
 
     }
 
@@ -55,6 +55,7 @@ public class scDataBase{
      * @return File file
      */
     public File getHtml(){
+        return dbFileObj;
 
     }
 
@@ -64,6 +65,7 @@ public class scDataBase{
      * @return File file
      */
     public File getLatex(){
+        return dbFileObj;
 
     }
 
@@ -142,6 +144,7 @@ public class scDataBase{
      * @return The added Question's ID value.
      */
     public int addQuestion(scRecord newQuestion) {
+        return 0;
 
     }
 
@@ -152,7 +155,7 @@ public class scDataBase{
      * @return the string [ ]
      */
     public String[] getSubjects(){
-        String[] subjects;
+        String[] subjects = {};
 
         return subjects;
     }
@@ -164,7 +167,7 @@ public class scDataBase{
      * @return the int [ ]
      */
     public int[] getSections(String subject){
-        int[] sections;
+        int[] sections = {};
 
         return sections;
     }
@@ -177,7 +180,7 @@ public class scDataBase{
      * @return the int [ ]
      */
     public int[] getSubSection(String subject, int section){
-        int[] subSections;
+        int[] subSections = {};
 
         return subSections;
     }
@@ -193,13 +196,17 @@ public class scDataBase{
      * @return True if records were added successfully. False if a problem occurred.
      */
     public boolean multiGet(scDataBase toThisDb, String[] subject, int[] section, int[] subsection, scRecord.DifficultyLevel[] difficulty){
+        return false;
 
 
     }
-
+/*
     public int[] getIDs(String [] subject, int[] section, int[] subsection, scRecord.DifficultyLevel difficulty){
 
+        return();
+
     }
+    */
 
 
     /**
@@ -210,6 +217,7 @@ public class scDataBase{
      * @return True if records were added successfully. False if a problem occurred.
      */
     public boolean multiGet(scDataBase toThisDb, int ...questionID){
+        return false;
 
     }
 
