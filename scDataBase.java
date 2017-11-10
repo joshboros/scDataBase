@@ -1,6 +1,17 @@
 import java.io.IOException;
 import java.lang.String;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+
+//Reading and writing DOM
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.*;
+
+import org.w3c.dom.*;
+import org.xml.sax.*;
 
 /**
  * The type scDataBase
@@ -24,6 +35,8 @@ public class scDataBase{
 
     private String dbName;      /** The name of the instance's database. */
     private File dbFileObj;     /** The path/file of the instance's database. */
+    private Document dbDom;
+    private final String domRoot = "TestBank";
 
     @Override
     public String toString() {
@@ -83,13 +96,14 @@ public class scDataBase{
      * This is default.xml
      */
     public scDataBase(){
+        //TODO This opens the default database in the directory that the program was executed. The main repo is going to import our repo a directory below. We need to make sure that the existing database file(s) still open correctly.
         dbName = dbDefaultName;
         dbFileObj = new File(dbDefaultDirPath.concat(dbDefaultName.concat(dbFileExt)));
         try {
             if (dbFileObj.createNewFile()) {
                 //create new xml file.
             } else {
-                //file exists.
+                parseXml();
             }
 
         } catch (IOException ioe){
@@ -112,7 +126,7 @@ public class scDataBase{
             if (dbFileObj.createNewFile()) {
                 //create new xml file
             } else {
-                //file exists.
+                parseXml();
             }
 
         } catch (IOException ioe){
@@ -155,21 +169,41 @@ public class scDataBase{
      * @return the string [ ]
      */
     public String[] getSubjects(){
-        String[] subjects = {};
-
-        return subjects;
+        NodeList nl = dbDom.getElementsByTagName("subject");
+        // Get unique occurrences of the subject.
+        Set<String> subjects = new HashSet<String>( );
+        for(int i = 0 ; i < nl.getLength(); i++) {
+           subjects.add(nl.item(i).getTextContent());
+        }
+        String subj[] = new String[subjects.size()];
+        subj = subjects.toArray(subj);
+        return subj;
     }
 
     /**
      * Get a list of section numbers for a subject.
      *
      * @param subject the subject name.
-     * @return the int [ ]
+     * @return the String [ ]
      */
-    public int[] getSections(String subject){
-        int[] sections = {};
+    public String[] getSections(String subject){
+        String expression = "/" + domRoot + "/question[subject='" + subject + "']/section";
+        Set<String> sections = new HashSet<String>();
 
-        return sections;
+        XPath xp = XPathFactory.newInstance().newXPath();
+        try {
+            XPathExpression xpExp = xp.compile(expression);
+            NodeList nl = (NodeList) xpExp.evaluate(dbDom,XPathConstants.NODESET);
+            for (int i = 0; i < nl.getLength(); i++){
+                sections.add(nl.item(i).getTextContent());
+            }
+        } catch (XPathExpressionException xpee){
+            xpee.printStackTrace();
+        }
+
+        String sect[] = new String[sections.size()];
+        sect = sections.toArray(sect);
+        return sect;
     }
 
     /**
@@ -220,6 +254,29 @@ public class scDataBase{
         return false;
 
     }
+
+    private void parseXml(){
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        try {
+
+            //Using factory get an instance of document builder
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            //parse using builder to get DOM representation of the XML file
+            dbDom = db.parse(dbFileObj);
+
+
+        }catch(ParserConfigurationException pce) {
+            pce.printStackTrace();
+        }catch(SAXException se) {
+            se.printStackTrace();
+        }catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+    }
+
 
 
 }
