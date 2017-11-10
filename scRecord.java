@@ -149,10 +149,14 @@ public class scRecord {
 
     /**
      * Gets question with html markup.
+     * If no html version found then return plain text.
      *
      * @return the question html
      */
     public String getQuestionHtml() {
+        if (questionHtml.isEmpty()){
+            return questionPlainText;
+        }
         return questionHtml;
     }
 
@@ -167,10 +171,14 @@ public class scRecord {
 
     /**
      * Get question with latex markup.
+     * If no latex version found then return plain text.
      *
      * @return the question latex
      */
     public String getQuestionLatex() {
+        if (questionLatex.isEmpty()){
+            return questionPlainText;
+        }
         return questionLatex;
     }
 
@@ -185,10 +193,14 @@ public class scRecord {
 
     /**
      * Get answer with html markup.
+     * If no html version found then return plain text.
      *
      * @return the answer html
      */
     public String getAnswerHtml() {
+        if (answerHtml.isEmpty()){
+            return answerPlainText;
+        }
         return answerHtml;
     }
 
@@ -240,10 +252,14 @@ public class scRecord {
 
     /**
      * Get the answer with latex markup.
+     * If no latex version found then return plain text.
      *
      * @return the answer latex
      */
     public String getAnswerLatex() {
+        if(answerLatex.isEmpty()){
+            return answerPlainText;
+        }
         return answerLatex;
     }
 
