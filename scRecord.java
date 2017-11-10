@@ -7,6 +7,7 @@ public class scRecord {
     private String subject;
     private int section;
     private int subsection;
+    private String topic;
     private String instructionsPlainText;
 
     private String questionPlainText;
@@ -17,6 +18,36 @@ public class scRecord {
     private String[] htmlChoices;
     private String answerLatex;
     private String answerHtml;
+
+    public String toString(){
+        StringBuffer sb = new StringBuffer();
+        sb.append("Subject: " + getSubject());
+        sb.append(System.lineSeparator());
+        sb.append("Section: " + getSection());
+        sb.append(System.lineSeparator());
+        sb.append("Subsection: " + getSubsection());
+        sb.append(System.lineSeparator());
+        sb.append("Topic: " + getTopic());
+        sb.append(System.lineSeparator());
+        sb.append("Question: ");
+        sb.append(System.lineSeparator());
+        sb.append("\tPlain Text: " + getQuestionPlainText());
+        sb.append(System.lineSeparator());
+        sb.append("\tHTML: " + getQuestionPlainText());
+        sb.append(System.lineSeparator());
+        sb.append("\tLATEX: " + getQuestionLatex());
+        sb.append(System.lineSeparator());
+        sb.append("Answer: ");
+        sb.append(System.lineSeparator());
+        sb.append("\tPlain Text: " + getAnswerPlainText());
+        sb.append(System.lineSeparator());
+        sb.append("\tHTML: " + getAnswerHtml());
+        sb.append(System.lineSeparator());
+        sb.append("\tLATEX: " + getAnswerLatex());
+        sb.append(System.lineSeparator());
+
+        return sb.toString();
+    }
 
     /**
      * The enum Difficulty level.
@@ -108,6 +139,24 @@ public class scRecord {
      */
     public void setSubsection(int subsection) {
         this.subsection = subsection;
+    }
+
+    /**
+     * Set topic.
+     *
+     * @param topic the topic
+     */
+    public void setTopic(String topic){
+        this.topic = topic;
+    }
+
+    /**
+     * Get topic string.
+     *
+     * @return the string
+     */
+    public String getTopic(){
+        return topic;
     }
 
     /**
