@@ -35,6 +35,8 @@ class domTool {
         }
     }
 
+
+
     private void getNodeList(){
         NodeList questionNodes = dbDom.getChildNodes();
     }
