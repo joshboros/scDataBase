@@ -1,10 +1,11 @@
+package school.termProject.database;
+
 //jb
 
 /**
  * The type Sc record.
  */
 
-package school.termProject.database;
 
 public class scRecord {
     private String subject;
@@ -23,6 +24,21 @@ public class scRecord {
 
     //private String questionJeopardy;
     //private String answerJeopardy;
+
+    scRecord(){
+        subject = null;
+        section = null;
+        subject = null;
+        subsection = null;
+        topic = null;
+        difficulty = DifficultyLevel.UNSPECIFIED;
+        instructions = null;
+        questionHtml = null;
+        questionLatex = null;
+        choicesHtml = null;
+        answerHtml = null;
+        answerPlainText = null;
+    }
 
     public String toString(){
         StringBuffer sb = new StringBuffer();
@@ -64,7 +80,8 @@ public class scRecord {
         /**
          * Unspecified difficulty level.
          */
-        UNSPECIFIED, /**
+        UNSPECIFIED,
+        /**
          * Easy difficulty level.
          */
         EASY, /**
@@ -73,8 +90,9 @@ public class scRecord {
         MEDIUM, /**
          * Hard difficulty level.
          */
-        HARD
+        HARD;
     }
+
 
     /**
      * Gets difficulty.
@@ -82,6 +100,7 @@ public class scRecord {
      * @return the difficulty
      */
     public DifficultyLevel getDifficulty() {
+
         return difficulty;
     }
 
