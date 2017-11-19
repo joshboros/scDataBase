@@ -1,3 +1,4 @@
+package school.termProject.database;
 import java.io.File;
 /**
  * The type TestDB.

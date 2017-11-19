@@ -1,7 +1,10 @@
+package school.termProject.database;
+
 import java.io.IOException;
 import java.lang.String;
 import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 //Reading and writing DOM
@@ -103,7 +106,7 @@ public class scDataBase{
             if (dbFileObj.createNewFile()) {
                 //create new xml file.
             } else {
-                parseXml();
+                //parseXml();
             }
 
         } catch (IOException ioe){
@@ -126,7 +129,7 @@ public class scDataBase{
             if (dbFileObj.createNewFile()) {
                 //create new xml file
             } else {
-                parseXml();
+                //parseXml();
             }
 
         } catch (IOException ioe){
@@ -157,8 +160,8 @@ public class scDataBase{
      *
      * @return The added Question's ID value.
      */
-    public int addQuestion(scRecord newQuestion) {
-        return 0;
+    public void addRecord(scRecord newQuestion) {
+
 
     }
 
@@ -219,63 +222,15 @@ public class scDataBase{
         return subSections;
     }
 
-    /**
-     * Get multiple records from this database and add them to another.
-     *
-     * @param toThisDb   The database to add the records to. The databases must have different names. If the names are the same, the return value is false.
-     * @param subject    A list of subjects to get.
-     * @param section   A list of Sections to get. If multiple subjects are specified in subject, then get each section as it exists under subject.
-     * @param subsection A list subsection to get. If multiple subjects and/or sections are specified then get each subsection under each of the subject's sections.
-     * @param difficulty Only add records of the specified difficulty levels.
-     * @return True if records were added successfully. False if a problem occurred.
-     */
-    public boolean multiGet(scDataBase toThisDb, String[] subject, int[] section, int[] subsection, scRecord.DifficultyLevel[] difficulty){
-        return false;
-
-
+    public List getRecords(){
+        List records = new List<scRecord>();
+        return records;
     }
-/*
-    public int[] getIDs(String [] subject, int[] section, int[] subsection, scRecord.DifficultyLevel difficulty){
 
-        return();
-
-    }
-    */
-
-
-    /**
-     * Get multiple records by Question ID and add them to another database.
-     *
-     * @param toThisDb   The database to add the records to. The databases must have different names. If the names are the same, the return value is false.
-     * @param questionID the id's of the records to add.
-     * @return True if records were added successfully. False if a problem occurred.
-     */
-    public boolean multiGet(scDataBase toThisDb, int ...questionID){
-        return false;
+    public void replaceRecords(scRecord[]){
 
     }
 
-    private void parseXml(){
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-        try {
-
-            //Using factory get an instance of document builder
-            DocumentBuilder db = dbf.newDocumentBuilder();
-
-            //parse using builder to get DOM representation of the XML file
-            dbDom = db.parse(dbFileObj);
-
-
-        }catch(ParserConfigurationException pce) {
-            pce.printStackTrace();
-        }catch(SAXException se) {
-            se.printStackTrace();
-        }catch(IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-    }
 
 
 
