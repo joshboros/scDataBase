@@ -3,6 +3,9 @@
 /**
  * The type Sc record.
  */
+
+package school.termProject.database;
+
 public class scRecord {
     private String subject;
     private Integer section;
@@ -18,8 +21,8 @@ public class scRecord {
     private String answerPlainText;
     private String answerHtml;
 
-    private String questionJeopardy;
-    private String answerJeopardy;
+    //private String questionJeopardy;
+    //private String answerJeopardy;
 
     public String toString(){
         StringBuffer sb = new StringBuffer();
@@ -41,14 +44,15 @@ public class scRecord {
         sb.append(System.lineSeparator());
         sb.append("\tLATEX: " + getQuestionLatex());
         sb.append(System.lineSeparator());
-        sb.append("\tJeopardy: " + getQuestionJeopardy());
-        sb.append(System.lineSeparator());
+        //sb.append("\tJeopardy: " + getQuestionJeopardy());
+        //sb.append(System.lineSeparator());
         sb.append("Answer: ");
         sb.append(System.lineSeparator());
         sb.append("\tHTML: " + getAnswerHtml());
-        sb.append(System.lineSeparator());
-        sb.append("\tJeopardy: " + getAnswerJeopardy());
+        //sb.append(System.lineSeparator());
+        //sb.append("\tJeopardy: " + getAnswerJeopardy());
         sb.append("Choices (HTML): " + getChoicesHtml());
+        sb.append(System.lineSeparator());
 
         return sb.toString();
     }
@@ -56,7 +60,7 @@ public class scRecord {
     /**
      * The enum Difficulty level.
      */
-    enum  DifficultyLevel{
+    public static enum  DifficultyLevel{
         /**
          * Unspecified difficulty level.
          */
@@ -69,7 +73,8 @@ public class scRecord {
         MEDIUM, /**
          * Hard difficulty level.
          */
-        HARD}
+        HARD
+    }
 
     /**
      * Gets difficulty.
@@ -276,10 +281,12 @@ public class scRecord {
         this.choicesHtml = choicesHtml;
     }
 
+    /**
     public String getQuestionJeopardy() {
         return questionJeopardy;
     }
-
+     */
+    /**
     public void setQuestionJeopardy(String questionJeopardy) {
         this.questionJeopardy = questionJeopardy;
     }
@@ -288,10 +295,11 @@ public class scRecord {
         return answerJeopardy;
     }
 
+
     public void setAnswerJeopardy(String answerJeopardy) {
         this.answerJeopardy = answerJeopardy;
     }
-/**
+
     static class difficultyLevel{
         private final Integer UNSPECIFIED = 0;
         private final Integer EASY = 1;
