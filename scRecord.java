@@ -1,5 +1,3 @@
-package school.termProject.database;
-
 //jb
 
 /**
@@ -12,32 +10,29 @@ public class scRecord {
     private Integer section;
     private Integer subsection;
     private String topic;
-    private DifficultyLevel difficulty;
+    private Integer difficulty;
     private String instructions;
 
     //private String questionPlainText;
     private String questionHtml;
     private String questionLatex;
     private String choicesHtml;
-    private String answerPlainText;
     private String answerHtml;
 
     //private String questionJeopardy;
     //private String answerJeopardy;
 
     scRecord(){
-        subject = null;
-        section = null;
-        subject = null;
-        subsection = null;
-        topic = null;
-        difficulty = DifficultyLevel.UNSPECIFIED;
-        instructions = null;
-        questionHtml = null;
-        questionLatex = null;
-        choicesHtml = null;
-        answerHtml = null;
-        answerPlainText = null;
+        subject = new String();
+        section = 0;
+        subsection = 0;
+        topic = new String();
+        difficulty = 0;
+        instructions = new String();
+        questionHtml = new String();
+        questionLatex = new String();
+        choicesHtml = new String();
+        answerHtml = new String();
     }
 
     public String toString(){
@@ -80,17 +75,27 @@ public class scRecord {
         /**
          * Unspecified difficulty level.
          */
-        UNSPECIFIED,
+        UNSPECIFIED(0),
         /**
          * Easy difficulty level.
          */
-        EASY, /**
+        EASY(1), /**
          * Medium difficulty level.
          */
-        MEDIUM, /**
+        MEDIUM(2), /**
          * Hard difficulty level.
          */
-        HARD;
+        HARD(3);
+
+        private Integer intLevel;
+
+        DifficultyLevel(Integer level){
+            this.intLevel = level;
+        }
+
+        public Integer getIntLevel(){
+            return intLevel;
+        }
     }
 
 
@@ -99,7 +104,7 @@ public class scRecord {
      *
      * @return the difficulty
      */
-    public DifficultyLevel getDifficulty() {
+    public Integer getDifficulty() {
 
         return difficulty;
     }
@@ -109,7 +114,7 @@ public class scRecord {
      *
      * @param difficulty the difficulty
      */
-    public void setDifficulty(DifficultyLevel difficulty) {
+    public void setDifficulty(Integer difficulty) {
         this.difficulty = difficulty;
     }
 
@@ -248,9 +253,6 @@ public class scRecord {
      * @return the answer html
      */
     public String getAnswerHtml() {
-        if (answerHtml.isEmpty()){
-            return answerPlainText;
-        }
         return answerHtml;
     }
 
@@ -263,24 +265,6 @@ public class scRecord {
         this.answerHtml = answerHtml;
     }
 
-
-    /**
-     * Get the answer in plain text.
-     *
-     * @return the answer plain text
-     */
-    public String getAnswerPlainText() {
-        return answerPlainText;
-    }
-
-    /**
-     * Set the answer in plain text.
-     *
-     * @param answerPlainText the answer plain text
-     */
-    public void setAnswerPlainText(String answerPlainText) {
-        this.answerPlainText = answerPlainText;
-    }
 
     /**
      * Get html choices string [ ].
