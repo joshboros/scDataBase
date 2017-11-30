@@ -1,5 +1,6 @@
-package school.termProject.database;
 import java.io.File;
+import java.util.LinkedList;
+
 /**
  * The type TestDB.
  */
@@ -31,6 +32,8 @@ public class TestDB {
                 System.out.println(section);
             }
         }
+
+        LinkedList<scRecord> records =  mydb.getRecords();
 
 
         /*
