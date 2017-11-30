@@ -127,4 +127,9 @@ class domTool {
         sect = sections.toArray(sect);
         return sect;
     }
+
+    public void replaceRecords(LinkedList<scRecord> records){
+        return;
+
+    }
 }

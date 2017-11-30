@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class TestDB {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         printDBnames();
         scDataBase mydb = new scDataBase();
         System.out.println("Subjects: ");
@@ -40,6 +41,9 @@ public class TestDB {
             if (a.getDifficulty() == 3)
                 System.out.println(a);
         }
+        String[] xdg = {"xdg-open", mydb.getHtml().getAbsolutePath()};
+        Runtime.getRuntime().exec(xdg);
+
     }
 
 

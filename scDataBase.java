@@ -1,16 +1,19 @@
+import javax.swing.text.html.HTMLDocument;
 import java.io.IOException;
+import java.io.Writer;
 import java.lang.String;
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-//Reading and writing DOM
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
-
-import org.w3c.dom.*;
-import org.xml.sax.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.LinkedList;
 
 /**
  * The type scDataBase
@@ -67,8 +70,57 @@ public class scDataBase{
      * @return File file
      */
     public File getHtml(){
-        return dbFileObj;
+        LinkedList<scRecord> records = getRecords();
+        BufferedWriter bufwriter = null;
+        try {
+            File htmlFile = new File("htmlout.html");
+            Writer writer = new FileWriter(htmlFile);
+            bufwriter = new BufferedWriter(writer);
 
+            bufwriter.write("<!DOCTYPE html>\n" + "<html>\n" + "<head>");
+            bufwriter.write("\t<title> " + getDBname() +  "</title>\n"
+                    +"\t<meta charset=\"UTF-8\">\n" + "</head>\n" );
+            bufwriter.write("<body>");
+
+            //Begin At the top
+
+            //for (scRecord record : records){
+                //Sort by Subject
+                for (String subject : getSubjects()){
+                    bufwriter.write("<h1>"+subject+"</h1>\n");
+                    List<scRecord> subjList = records.stream()
+                            .filter(rec -> rec.getSubject() == subject)
+                            .collect(Collectors.toList());
+                    //Then the Section of the subject.
+                    for(String section : getSections(subject)){
+                        bufwriter.write("\t<h2>"+section);
+                        List<scRecord> sectionList = subjList.stream()
+                                .filter(rec -> rec.getSection() == Integer.valueOf(section))
+                                .collect(Collectors.toList());
+                        for(String subsec : getSubSections(subject, Integer.valueOf(section))){
+                            bufwriter.write("." + subsec + "</h2>\n");
+                            List<scRecord> subsecList = sectionList;
+
+                        }
+                    }
+
+                }
+                //bufwriter.write("<h1>"+records.getSubject()+"</h1>");
+                //bufwriter.write("<h2>"+records.getTopic()+"</h21>");
+            //}
+            bufwriter.write("</body>\n" + "</html>\n");
+            bufwriter.flush();
+            bufwriter.close();
+        } catch(IOException e){
+            e.printStackTrace();
+        } finally{
+            try {
+                if (bufwriter != null) bufwriter.close();
+            } catch (Exception ex) {
+
+            }
+        }
+        return dbFileObj;
     }
 
     /**
@@ -187,9 +239,19 @@ public class scDataBase{
      * @param section The subject's section
      * @return the int [ ]
      */
-    public int[] getSubSection(String subject, int section){
-        int[] subSections = {};
-
+    public String[] getSubSections(String subject, int section) {
+        String[] subSections;
+        List<scRecord> records = getRecords();
+        Set<scRecord> subsecRecords = records.stream()
+                .filter(record -> record.getSubject() == subject)
+                .filter(record -> record.getSection() == section)
+                //.sorted(Comparator.comparing(scRecord::getSubsection)
+                .collect(Collectors.toSet());
+        subSections = new String[subsecRecords.size()];
+        int i = 0;
+        for (scRecord rec : subsecRecords) {
+            subSections[i++] = Integer.toString(rec.getSubsection());
+        }
         return subSections;
     }
 
@@ -197,7 +259,9 @@ public class scDataBase{
         return dtool.parse();
     }
 
-    public void replaceRecords(){
+    public void replaceRecords(List<scRecord> records){
+        return;
+
 
 
     }
