@@ -46,6 +46,7 @@ public class TestDB {
         }
         mydb.getHtml();
         mydb.getLatex();
+        mydb.getPDF();
         //String[] xdg = {"xdg-open", mydb.getHtml().getAbsolutePath()};
         //Runtime.getRuntime().exec(xdg);
 

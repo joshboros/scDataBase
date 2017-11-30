@@ -59,7 +59,9 @@ public class scDataBase{
      *
      * @return File file
      */
-    public File getPDF(){
+    public File getPDF() throws IOException {
+        String[] runpdf = {"firefox", "-print", getPDF().getPath(), "-printmode", "pdf", "-printfile", "db.pdf"};
+        Runtime.getRuntime().exec(runpdf);
         return dbFileObj;
 
     }
