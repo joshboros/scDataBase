@@ -32,6 +32,9 @@ public class TestDB {
             System.out.println(subject);
             for (String section : mydb.getSections(subject)) {
                 System.out.println(section);
+                for (String subsection : mydb.getSubSections(subject, Integer.valueOf(section))) {
+                    System.out.println(subsection);
+                }
             }
         }
 
@@ -41,8 +44,10 @@ public class TestDB {
             if (a.getDifficulty() == 3)
                 System.out.println(a);
         }
-        String[] xdg = {"xdg-open", mydb.getHtml().getAbsolutePath()};
-        Runtime.getRuntime().exec(xdg);
+        mydb.getHtml();
+        mydb.getLatex();
+        //String[] xdg = {"xdg-open", mydb.getHtml().getAbsolutePath()};
+        //Runtime.getRuntime().exec(xdg);
 
     }
 

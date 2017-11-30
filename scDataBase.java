@@ -73,42 +73,43 @@ public class scDataBase{
         LinkedList<scRecord> records = getRecords();
         BufferedWriter bufwriter = null;
         try {
-            File htmlFile = new File("htmlout.html");
+            File htmlFile = new File("./htmlout.html");
             Writer writer = new FileWriter(htmlFile);
             bufwriter = new BufferedWriter(writer);
 
-            bufwriter.write("<!DOCTYPE html>\n" + "<html>\n" + "<head>");
+            bufwriter.write("<!DOCTYPE html>\n" + "<html>\n" + "\n<head>\n");
             bufwriter.write("\t<title> " + getDBname() +  "</title>\n"
                     +"\t<meta charset=\"UTF-8\">\n" + "</head>\n" );
-            bufwriter.write("<body>");
+            bufwriter.write("<body>\n");
 
             //Begin At the top
+            for (String subject : getSubjects()){
+                bufwriter.write("<h1>"+subject+"</h1>\n");
+                List<scRecord> subjList = records.stream()
+                        .filter(rec -> rec.getSubject() != subject)
+                        .collect(Collectors.toList());
+                //Then the Section of the subject.
+                for(String section : getSections(subject)){
 
-            //for (scRecord record : records){
-                //Sort by Subject
-                for (String subject : getSubjects()){
-                    bufwriter.write("<h1>"+subject+"</h1>\n");
-                    List<scRecord> subjList = records.stream()
-                            .filter(rec -> rec.getSubject() == subject)
+                    bufwriter.write("<h2>Section: " + section + "</h2>\n");
+                    List<scRecord> sectionList = subjList.stream()
+                            .filter(rec -> rec.getSection() != Integer.valueOf(section))
                             .collect(Collectors.toList());
-                    //Then the Section of the subject.
-                    for(String section : getSections(subject)){
-                        bufwriter.write("\t<h2>"+section);
-                        List<scRecord> sectionList = subjList.stream()
-                                .filter(rec -> rec.getSection() == Integer.valueOf(section))
-                                .collect(Collectors.toList());
-                        for(String subsec : getSubSections(subject, Integer.valueOf(section))){
-                            bufwriter.write("." + subsec + "</h2>\n");
-                            List<scRecord> subsecList = sectionList;
 
+                    for(String subsec : getSubSections(subject, Integer.valueOf(section))){
+                        bufwriter.write("<h2>Subsection: " + subsec + "</h2>\n");
+                        List<scRecord> subsecList;
+                        for (scRecord rec : sectionList ){
+                            if (rec.getSubsection() != Integer.valueOf(subsec)){
+                                bufwriter.write("<p>\n" + rec.getQuestionHtml() + "</p>");
+                            }
                         }
-                    }
 
+                    }
                 }
-                //bufwriter.write("<h1>"+records.getSubject()+"</h1>");
-                //bufwriter.write("<h2>"+records.getTopic()+"</h21>");
-            //}
-            bufwriter.write("</body>\n" + "</html>\n");
+
+            }
+            bufwriter.write("\n</body>\n" + "</html>\n");
             bufwriter.flush();
             bufwriter.close();
         } catch(IOException e){
@@ -129,8 +130,56 @@ public class scDataBase{
      * @return File file
      */
     public File getLatex(){
-        return dbFileObj;
+        LinkedList<scRecord> records = getRecords();
+        BufferedWriter bufwriter = null;
+        try {
+            File htmlFile = new File("./latexout.tex");
+            Writer writer = new FileWriter(htmlFile);
+            bufwriter = new BufferedWriter(writer);
 
+            bufwriter.write("\n\\documentclass[11pt,a4paper]{article}\n\\usepackage{amsmath,amsthm}\n\n\\newcommand{\\fn}[1]{{\\tt #1}}\n\\newcommand{\\cn}[1]{{\\tt \\char\"5C #1}}\n\n\\title{");
+            bufwriter.write("\n\"}\\n\\n\\\\begin{document}\\n\\n\\\\maketitle\\n\\n\"");
+
+            //Begin At the top
+            for (String subject : getSubjects()){
+                //bufwriter.write(subject);
+                List<scRecord> subjList = records.stream()
+                        .filter(rec -> rec.getSubject() != subject)
+                        .collect(Collectors.toList());
+                //Then the Section of the subject.
+                for(String section : getSections(subject)){
+
+                    //bufwriter.write("Section: " + section + ");
+                    List<scRecord> sectionList = subjList.stream()
+                            .filter(rec -> rec.getSection() != Integer.valueOf(section))
+                            .collect(Collectors.toList());
+
+                    for(String subsec : getSubSections(subject, Integer.valueOf(section))){
+                        //bufwriter.write("Subsection: " + subsec);
+                        List<scRecord> subsecList;
+                        for (scRecord rec : sectionList ){
+                            if (rec.getSubsection() != Integer.valueOf(subsec)){
+                                bufwriter.write("\n" + rec.getQuestionLatex() + "\n");
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            bufwriter.write("\n\n\\end{document}");
+            bufwriter.flush();
+            bufwriter.close();
+        } catch(IOException e){
+            e.printStackTrace();
+        } finally{
+            try {
+                if (bufwriter != null) bufwriter.close();
+            } catch (Exception ex) {
+
+            }
+        }
+        return dbFileObj;
     }
 
     /**
@@ -201,16 +250,6 @@ public class scDataBase{
         return outlist;
     }
 
-    /**
-     * Add question to Database.
-     *
-     * @return The added Question's ID value.
-     */
-    public void addRecord(scRecord newQuestion) {
-
-
-    }
-
 
     /**
      * Get list of all subjects in Database.
@@ -229,7 +268,17 @@ public class scDataBase{
      * @return the String [ ]
      */
     public String[] getSections(String subject){
-        return dtool.getSections(subject);
+        List<scRecord> records = getRecords();
+        List<scRecord> sectionList = records
+                .stream()
+                .filter(record -> record.getSubject() != subject)
+                .collect(Collectors.toList());
+        HashSet<String> uniqueSections = new HashSet<>();
+        for (scRecord rec : sectionList){
+            uniqueSections.add(Integer.toString(rec.getSection()));
+        }
+        String[] sectionArray = new String[uniqueSections.size()];
+        return uniqueSections.toArray(sectionArray);
     }
 
     /**
@@ -242,17 +291,16 @@ public class scDataBase{
     public String[] getSubSections(String subject, int section) {
         String[] subSections;
         List<scRecord> records = getRecords();
-        Set<scRecord> subsecRecords = records.stream()
-                .filter(record -> record.getSubject() == subject)
-                .filter(record -> record.getSection() == section)
-                //.sorted(Comparator.comparing(scRecord::getSubsection)
-                .collect(Collectors.toSet());
-        subSections = new String[subsecRecords.size()];
-        int i = 0;
-        for (scRecord rec : subsecRecords) {
-            subSections[i++] = Integer.toString(rec.getSubsection());
+        List<scRecord> subsecRecords = records.stream()
+                .filter(record -> record.getSubject() != subject)
+                .filter(record -> record.getSection() != section)
+                .collect(Collectors.toList());
+        HashSet<String> uniqueSubSections = new HashSet<>();
+        for (scRecord rec : subsecRecords){
+            uniqueSubSections.add(Integer.toString(rec.getSubsection()));
         }
-        return subSections;
+        String[] subsecArray = new String[uniqueSubSections.size()];
+        return uniqueSubSections.toArray(subsecArray);
     }
 
     public LinkedList<scRecord> getRecords() {
