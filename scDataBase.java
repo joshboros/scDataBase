@@ -1,6 +1,16 @@
 import java.io.IOException;
 import java.lang.String;
 import java.io.File;
+import java.util.*;
+
+//Reading and writing DOM
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.*;
+
+import org.w3c.dom.*;
+import org.xml.sax.*;
 
 /**
  * The type scDataBase
@@ -24,6 +34,8 @@ public class scDataBase{
 
     private String dbName;      /** The name of the instance's database. */
     private File dbFileObj;     /** The path/file of the instance's database. */
+    private final String domRoot = "TestBank";
+    private domTool dtool;
 
     @Override
     public String toString() {
@@ -83,18 +95,17 @@ public class scDataBase{
      * This is default.xml
      */
     public scDataBase(){
+        //TODO This opens the default database in the directory that the program was executed. The main repo is going to import our repo a directory below. We need to make sure that the existing database file(s) still open correctly.
         dbName = dbDefaultName;
         dbFileObj = new File(dbDefaultDirPath.concat(dbDefaultName.concat(dbFileExt)));
         try {
             if (dbFileObj.createNewFile()) {
                 //create new xml file.
-            } else {
-                //file exists.
             }
-
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
+        dtool = new domTool(dbFileObj);
     }
 
     /**
@@ -112,7 +123,7 @@ public class scDataBase{
             if (dbFileObj.createNewFile()) {
                 //create new xml file
             } else {
-                //file exists.
+                //parseXml();
             }
 
         } catch (IOException ioe){
@@ -143,8 +154,8 @@ public class scDataBase{
      *
      * @return The added Question's ID value.
      */
-    public int addQuestion(scRecord newQuestion) {
-        return 0;
+    public void addRecord(scRecord newQuestion) {
+
 
     }
 
@@ -155,21 +166,18 @@ public class scDataBase{
      * @return the string [ ]
      */
     public String[] getSubjects(){
-        String[] subjects = {};
+        return dtool.getSubjects();
 
-        return subjects;
     }
 
     /**
      * Get a list of section numbers for a subject.
      *
      * @param subject the subject name.
-     * @return the int [ ]
+     * @return the String [ ]
      */
-    public int[] getSections(String subject){
-        int[] sections = {};
-
-        return sections;
+    public String[] getSections(String subject){
+        return dtool.getSections(subject);
     }
 
     /**
@@ -185,41 +193,16 @@ public class scDataBase{
         return subSections;
     }
 
-    /**
-     * Get multiple records from this database and add them to another.
-     *
-     * @param toThisDb   The database to add the records to. The databases must have different names. If the names are the same, the return value is false.
-     * @param subject    A list of subjects to get.
-     * @param section   A list of Sections to get. If multiple subjects are specified in subject, then get each section as it exists under subject.
-     * @param subsection A list subsection to get. If multiple subjects and/or sections are specified then get each subsection under each of the subject's sections.
-     * @param difficulty Only add records of the specified difficulty levels.
-     * @return True if records were added successfully. False if a problem occurred.
-     */
-    public boolean multiGet(scDataBase toThisDb, String[] subject, int[] section, int[] subsection, scRecord.DifficultyLevel[] difficulty){
-        return false;
+    public LinkedList<scRecord> getRecords() {
+        return dtool.parse();
+    }
+
+    public void replaceRecords(){
 
 
     }
-/*
-    public int[] getIDs(String [] subject, int[] section, int[] subsection, scRecord.DifficultyLevel difficulty){
-
-        return();
-
-    }
-    */
 
 
-    /**
-     * Get multiple records by Question ID and add them to another database.
-     *
-     * @param toThisDb   The database to add the records to. The databases must have different names. If the names are the same, the return value is false.
-     * @param questionID the id's of the records to add.
-     * @return True if records were added successfully. False if a problem occurred.
-     */
-    public boolean multiGet(scDataBase toThisDb, int ...questionID){
-        return false;
-
-    }
 
 
 }

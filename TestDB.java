@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.LinkedList;
+
 /**
  * The type TestDB.
  */
@@ -22,6 +24,19 @@ public class TestDB {
      */
     public static void main(String[] args) {
         printDBnames();
+        scDataBase mydb = new scDataBase();
+        System.out.println("Subjects: ");
+        for (String subject : mydb.getSubjects()) {
+            System.out.println(subject);
+            for (String section : mydb.getSections(subject)) {
+                System.out.println(section);
+            }
+        }
+
+        LinkedList<scRecord> records =  mydb.getRecords();
+
+
+        /*
         String[] dba =  scDataBase.getDBnameArray();
         scDataBase dbArray[] = new scDataBase[scDataBase.getDBnameArray().length];
         for (String dbname : scDataBase.getDBnameArray()){
@@ -30,6 +45,7 @@ public class TestDB {
 
         scDataBase testdefdb = new scDataBase();
         System.out.println("Opened " + testdefdb.getDBname());
+        */
 
 
 
