@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 /**
  * The type TestDB.
@@ -33,7 +34,13 @@ public class TestDB {
             }
         }
 
-        LinkedList<scRecord> records =  mydb.getRecords();
+        LinkedList<scRecord> records = mydb.getRecords();
+
+        for(scRecord a : records){
+            if (a.getDifficulty() == 3)
+                System.out.println(a);
+        }
+    }
 
 
         /*
@@ -58,4 +65,3 @@ public class TestDB {
 
 
     }
-}

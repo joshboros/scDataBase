@@ -55,7 +55,6 @@ class domTool {
         NodeList questionList = documentElement.getElementsByTagName("question");
         if(questionList != null && questionList.getLength() > 0) {
             for(int i = 0 ; i < questionList.getLength(); i++) {
-
                 //get a question element from the nodelist.
                 Element questionElement = (Element) questionList.item(i);
 
@@ -73,7 +72,7 @@ class domTool {
         String textVal = null;
         NodeList nl = question.getElementsByTagName(tagName);
         if(nl != null && nl.getLength() > 0) {
-            textVal = nl.item(0).getFirstChild().getNodeValue();
+            textVal = nl.item(0).getTextContent();
             //textVal = el.getFirstChild().getNodeValue();
         }
         return textVal;
