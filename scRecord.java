@@ -284,12 +284,12 @@ public class scRecord {
         this.choicesHtml = choicesHtml;
     }
 
-    /**
+    
     public String getQuestionJeopardy() {
         return questionJeopardy;
     }
-     */
-    /**
+     
+    
     public void setQuestionJeopardy(String questionJeopardy) {
         this.questionJeopardy = questionJeopardy;
     }
@@ -316,5 +316,5 @@ public class scRecord {
         }
     }
 
-*/
+
 }
