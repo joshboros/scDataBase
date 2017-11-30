@@ -3,7 +3,7 @@
 <!--TODO Remove jeopardy entries... -->
 
 <!--The primary interface is through a request for a java collection framework via LinkedList.
-//The streaming API provides SQL like functions. -->
+The streaming API provides SQL like functions. -->
 
 <TestBank>
     <question>
