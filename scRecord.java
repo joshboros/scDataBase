@@ -12,15 +12,10 @@ public class scRecord {
     private String topic;
     private Integer difficulty;
     private String instructions;
-
-    //private String questionPlainText;
     private String questionHtml;
     private String questionLatex;
     private String choicesHtml;
     private String answerHtml;
-
-    //private String questionJeopardy;
-    //private String answerJeopardy;
 
     scRecord(){
         subject = new String();
@@ -55,13 +50,10 @@ public class scRecord {
         sb.append(System.lineSeparator());
         sb.append("\tLATEX: " + getQuestionLatex());
         sb.append(System.lineSeparator());
-        //sb.append("\tJeopardy: " + getQuestionJeopardy());
-        //sb.append(System.lineSeparator());
         sb.append("Answer: ");
         sb.append(System.lineSeparator());
         sb.append("\tHTML: " + getAnswerHtml());
-        //sb.append(System.lineSeparator());
-        //sb.append("\tJeopardy: " + getAnswerJeopardy());
+        sb.append(System.lineSeparator());
         sb.append("Choices (HTML): " + getChoicesHtml());
         sb.append(System.lineSeparator());
 
@@ -210,7 +202,7 @@ public class scRecord {
 
     /**
      * Gets question with html markup.
-     * If no html version found then return plain text.
+     * 
      *
      * @return the question html
      */
@@ -285,36 +277,4 @@ public class scRecord {
     }
 
     
-    public String getQuestionJeopardy() {
-        return questionJeopardy;
-    }
-     
-    
-    public void setQuestionJeopardy(String questionJeopardy) {
-        this.questionJeopardy = questionJeopardy;
-    }
-
-    public String getAnswerJeopardy() {
-        return answerJeopardy;
-    }
-
-
-    public void setAnswerJeopardy(String answerJeopardy) {
-        this.answerJeopardy = answerJeopardy;
-    }
-
-    static class difficultyLevel{
-        private final Integer UNSPECIFIED = 0;
-        private final Integer EASY = 1;
-        private final Integer MEDIUM = 2;
-        private final Integer HARD =3;
-
-        private Integer level;
-
-        public  getLevel(){
-            return level;
-        }
-    }
-
-
 }
