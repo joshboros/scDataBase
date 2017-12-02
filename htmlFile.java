@@ -1,14 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *this class uses the program latex2html, LatexFile class, and RetrieveXML class
- * generates a temporary latex file to convert latex math mode to png files
- * generates test directory that contains index.html this is the html test
- * @author derek
- */
 import java.io.*;
 import java.util.Formatter;
 import java.awt.List;
