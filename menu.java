@@ -1,3 +1,6 @@
+//SC
+
+
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +9,7 @@ import java.io.InputStream;
 
 public class menu 
 {
+	//Print ReadXMLFile.java to terminal
     private static void printLines(String name, InputStream ins) throws Exception {
         String line = null;
         BufferedReader in = new BufferedReader(
@@ -15,12 +19,11 @@ public class menu
         }
       }
 
+	//Runtime process to execute ReadXMLFile.java
     private static void runProcess(String command) throws Exception {
         Process pro = Runtime.getRuntime().exec(command);
         printLines("", pro.getInputStream());
-        //printLines(command + " stderr:", pro.getErrorStream());
         pro.waitFor();
-        //System.out.println(command + " exitValue() " + pro.exitValue());
       }
 	
 	public static void main(String args[]) 
