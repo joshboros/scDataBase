@@ -109,8 +109,27 @@ public class menu
         //Create Your Own Test
         else if (choice == 3)
         {
-            System.out.println("\nCREATE YOUR OWN TEST");
-            System.out.println("***********************");
+            System.out.println("\nCREATE YOUR OWN TEST (Unstable)");
+            System.out.println("**********************************");
+
+			    System.out.println("Enter question difficulties to print");
+                int difficulty = scan.nextInt();
+            
+                System.out.println("Enter max number of questions to print");
+                int questionQuantity = scan.nextInt();
+            
+                if(lbase)
+                database1.WriteLatexQuestions(sectionTopic,section,difficulty,questionQuantity);
+                if (hbase)
+                database2.WritehtmlQuestions(sectionTopic,section,difficulty,questionQuantity);
+            
+                System.out.println("Do you want to continue adding questions? Y = yes, N = no");
+                String resp = scan.next();
+            
+                if (resp.charAt(0) == ('Y' | 'y'))
+                continues = true;
+                else
+                continues = false;
             
             
             System.out.println("Enter subject covered");
