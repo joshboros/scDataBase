@@ -18,6 +18,7 @@ The streaming API provides SQL like functions. -->
 		<answerHtml>-&#8734;</answerHtml>
 		<instructions>Determine the infinite limit:</instructions>
 		<questionLatex>\lim_{x \to -3} \frac{x + 2}{x + 3}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
 		<questionJeopardy>Infinite limit: lim<sub>x &#8594; -3<sup>+</sup></sub> (x + 2) &#8260; (x + 3)</questionJeopardy>
 		<answerJeopardy>What is -&#8734;?</answerJeopardy>
 		<instructions></instructions>
@@ -35,6 +36,7 @@ The streaming API provides SQL like functions. -->
 		<answerHtml>-&#8734;</answerHtml>
         <instructions>Determine the infinite limit:</instructions>
 		<questionLatex>\lim_{x \to 2\pi^-} x csc x</questionLatex>
+        <answerLatex>Answer:</answerLatex>
 		<questionJeopardy>Infinite limit: lim<sub>x &#8594; 2&#960;<sup>-</sup></sub> x csc x</questionJeopardy>
 		<answerJeopardy>What is -&#8734;?</answerJeopardy>
 		<instructions></instructions>
@@ -52,6 +54,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>5</answerHtml>
         <instructions>Evaluate the limit, if it exists:</instructions>
         <questionLatex>\lim_{x \to 2} \frac{x^2 + x - 6}{x - 2}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>lim<sub>x &#8594; 2</sub> (x<sup>2</sup> + x - 6) &#8260; (x - 2)</questionJeopardy>
         <answerJeopardy>What is 5?</answerJeopardy>
         <instructions></instructions>
@@ -70,6 +73,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml><sup>1</sup>&#8260;<sub>128</sub></answerHtml>
         <instructions>Evaluate the limit, if it exists:</instructions>
         <questionLatex>\lim_{x \to 16} \frac{4 - \sqrt{x}}{16x - x^2}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>lim<sub>x &#8594; 16</sub> (4 - /*&#8730;*/x) &#8260; (16x - x<sup>2</sup>)</questionJeopardy>
         <answerJeopardy>What is <sup>1</sup>&#8260;<sub>128</sub>?</answerJeopardy>
         <instructions></instructions>
@@ -87,6 +91,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml><sup>7</sup>&#8260;<sub>3</sub></answerHtml>
         <instructions>Use continuity to evaluate the limit:</instructions>
         <questionLatex>\lim{x \to 4} \frac{5 + \sqrt{x}}{\sqrt{5 + x}}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy></questionJeopardy>
         <answerJeopardy>What is <sup>7</sup>&#8260;<sub>3</sub>?</answerJeopardy>
         <instructions></instructions>
@@ -104,6 +109,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>1</answerHtml>
         <instructions>Use continuity to evaluate the limit:</instructions>
         <questionLatex>\lim{x \to 1} e^{x^2 - x}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>lim<sub>x &#8594; 1</sub>e<sup>x<sup>2</sup> - x</sup></questionJeopardy>
         <answerJeopardy>What is 1?</answerJeopardy>
         <instructions></instructions>
@@ -121,6 +127,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>0</answerHtml>
         <instructions>Find the limit:</instructions>
         <questionLatex>\lim{x \to \infty} \frac{1}{2x + 3}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy></questionJeopardy>
         <answerJeopardy></answerJeopardy>
         <instructions></instructions>
@@ -138,6 +145,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml><sup>1</sup>&#8260;<sub>6</sub></answerHtml>
         <instructions>Find the limit:</instructions>
         <questionLatex>\lim{x \to \infty} (\sqrt{9x^2 + x} - 3x)</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy></questionJeopardy>
         <answerJeopardy></answerJeopardy>
         <instructions></instructions>
@@ -155,6 +163,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>-2 + 8a</answerHtml>
         <instructions>Find f'(a):</instructions>
         <questionLatex>f(a) = 3 - 2a + 4a^2</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>f'(a), where f(a) = 3 - 2a + 4a<sup>2</sup></questionJeopardy>
         <answerJeopardy>What is 02 + 8a?</answerJeopardy>
         <instructions></instructions>
@@ -172,6 +181,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>1 m/s</answerHtml>
         <instructions>A particle moves along a straight line with equation of motion s = f(t), where s is measured in meters and t in seconds. Find the velocity and the speed when t = 5.</instructions>
         <questionLatex>f(t) = 100 + 50t - 4.9t^2</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The velocity and speed of a particle moving along a straight line with equation of motion s = f(t), where s is measured in meters and t in seconds when t = 5; <br />f(t) = 100 + 50t - 4.9t<sup>2</sup></questionJeopardy>
         <answerJeopardy>What is 1 m/s?</answerJeopardy>
         <instructions></instructions>
@@ -189,6 +199,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml><sup>-2</sup>&#8260;<sub>5x<sup>7/5</sup></sub></answerHtml>
         <instructions>Differentiate the function:</instructions>
         <questionLatex>y = x^{-2/5}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of the function y = x<sup>-2</sup>&#8260;<sub>5</sub></questionJeopardy>
         <answerJeopardy>What is <sup>-2</sup>&#8260;<sub>5x<sup>7/5</sup></sub>?</answerJeopardy>
         <instructions></instructions>
@@ -206,6 +217,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml><sup>1</sup>&#8260;<sub>5</sub>t<sup>-4/5</sup> + 10t<sup>3/2</sup></answerHtml>
         <instructions>Differentiate the function:</instructions>
         <questionLatex>u = \sqrt[5]{t} + 4\sqrt{t^5}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of the function u = </questionJeopardy>
         <answerJeopardy>What is <sup>1</sup>&#8260;<sub>5</sub>t<sup>-4/5</sup> + 10t<sup>3/2</sup>?</answerJeopardy>
         <instructions></instructions>
@@ -223,6 +235,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>e<sup>x</sup>(x<sup>3</sup> + 3x<sup>2</sup> + 2x + 2)</answerHtml>
         <instructions>Differentiate:</instructions>
         <questionLatex>f(x) = (x^3 + 2x)e^x</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of f(x) = (x<sup>3</sup> + 2x)e<sup>x</sup></questionJeopardy>
         <answerJeopardy>What is e<sup>x</sup>(x<sup>3</sup> + 3x<sup>2</sup> + 2x + 2)?</answerJeopardy>
         <instructions></instructions>
@@ -240,6 +253,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>(x<sup>2</sup>(3 - x<sup>2</sup>))/(1 - x<sup>2</sup>)<sup>2</sup>)</answerHtml>
         <instructions>Differentiate:</instructions>
         <questionLatex>y = \frac{x^3}{1 - x^2}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of <sup>x<sup>3</sup></sup>/<sub>1 - x<sup>2</sup></sub></questionJeopardy>
         <answerJeopardy>What is (x<sup>2</sup>(3 - x<sup>2</sup>))/(1 - x<sup>2</sup>)<sup>2</sup>)?</answerJeopardy>
         <instructions></instructions>
@@ -257,6 +271,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>6x + 2 sin x</answerHtml>
         <instructions>Differentiate:</instructions>
         <questionLatex>f(x) = 3x^2 - 2 cos x</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of f(x) = 3x<sup>2</sup> - 2 cos x</questionJeopardy>
         <answerJeopardy>What is 6x + 2 sin x?</answerJeopardy>
         <instructions></instructions>
@@ -274,6 +289,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>y - 2 = 2(3)<sup>1/2</sup>(x - <sup>&#960;</sup>/<sub>3</sub>)</answerHtml>
         <instructions>Find an equation of the tangent line to the curve y = sec x at</instructions>
         <questionLatex>\frac{3\pi, 2}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>An equation for the tangent line to the curve y = sec x at (&#960; &#8260; 3, 2)</questionJeopardy>
         <answerJeopardy>What is y - 2 = 2(3)<sup>1/2</sup>(x - <sup>&#960;</sup>/<sub>3</sub>)?</answerJeopardy>
         <instructions></instructions>
@@ -291,6 +307,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>5(x<sup>4</sup> + 3x<sup>2</sup> - 2)<sup>4</sup>(4x<sup>3</sup> + 6x)</answerHtml>
         <instructions>Find the derivative of the function:</instructions>
         <questionLatex> F(x) = (x^4 + 3x^2 - 2)^5</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of F(x) = (x<sup>4</sup> + 3x<sup>2</sup> - 2)<sup>5</sup></questionJeopardy>
         <answerJeopardy>What is 5(x<sup>4</sup> + 3x<sup>2</sup> - 2)<sup>4</sup>(4x<sup>3</sup> + 6x)?</answerJeopardy>
         <instructions></instructions>
@@ -308,6 +325,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>8(2x - 5)<sup>3</sup>(8x<sup>2</sup> - 5)<sup>-4</sup>(-4x<sup>2</sup> + 30x - 5)</answerHtml>
         <instructions>Find the derivative of the function:</instructions>
         <questionLatex> y = (2x - 5)^4(8x^2 - 5)^{-3}</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of y = (2x - 5)<sup>4</sup>(8x<sup>2</sup> - 5)<sup>3</sup></questionJeopardy>
         <answerJeopardy>What is 8(2x - 5)<sup>3</sup>(8x<sup>2</sup> - 5)<sup>-4</sup>(-4x<sup>2</sup> + 30x - 5)?</answerJeopardy>
         <instructions></instructions>
@@ -325,6 +343,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>y' = (-x<sup>2</sup>)/(y<sup>2</sup>)</answerHtml>
         <instructions>Find dy/dx by implicit differentiation:</instructions>
         <questionLatex> x^3 + y^3 = 1</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy><sup>dy</sup>&#8260;<sub>dx</sub> of x<sup>3</sup> + y<sup>3</sup> = 1</questionJeopardy>
         <answerJeopardy>What is y' = (-x<sup>2</sup>)/(y<sup>2</sup>)?</answerJeopardy>
         <instructions></instructions>
@@ -342,6 +361,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>y' = (e<sup>y</sup> sin x + y cos(xy))/(e<sup>y</sup> cos x - x cos(xy))</answerHtml>
         <instructions>Find dy/dx by implicit differentiation:</instructions>
         <questionLatex> e^y cos x = 1 + sin(xy)</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy><sup>dy</sup>&#8260;<sub>dx</sub> of e<sup>y</sup> cos x = 1 + sin(xy)</questionJeopardy>
         <answerJeopardy>What is y' = (e<sup>y</sup> sin x + y cos(xy))/(e<sup>y</sup> cos x - x cos(xy))?</answerJeopardy>
         <instructions></instructions>
@@ -359,6 +379,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>cos(ln x)/x</answerHtml>
         <instructions>Differentiate the function:</instructions>
         <questionLatex> f(x) = sin(ln x)</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of f(x) = sin(ln x)</questionJeopardy>
         <answerJeopardy>What is <sup>cos(ln x)</sup>&#8260;<sub>x</sub>?</answerJeopardy>
         <instructions></instructions>
@@ -376,6 +397,7 @@ The streaming API provides SQL like functions. -->
         <answerHtml>(-x)/(1 + x)</answerHtml>
         <instructions>Differentiate the function:</instructions>
         <questionLatex> y = ln(e^{-x} + xe^{-x})</questionLatex>
+        <answerLatex>Answer:</answerLatex>
         <questionJeopardy>The derivative of y = ln(e<sup>-x</sup> + xe<sup>-x</sup>)</questionJeopardy>
         <answerJeopardy>What is <sup>-x</sup>&#8260;<sub>1 + x</sub>?</answerJeopardy>
         <instructions></instructions>
